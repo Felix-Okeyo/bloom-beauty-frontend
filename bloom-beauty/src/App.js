@@ -1,20 +1,20 @@
-import './App.css';
 import React from 'react';
-import Checkout from './components/Checkout';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Product from './components/Product';
+import Checkout from './components/Checkout'; 
 
 function App() {
-  const productA = {
-    name: 'Product A',
-    price: '100.00',
-    sizes: ["XS", "S", "M", "L", "XL"],
-    image: 'https://www.pexels.com/photo/colored-powders-and-brush-1749452/'
-  };
-
   return (
-    <div className="App">
-      <Checkout product={productA} />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Product />} />
+        <Route path="/checkout" element={<Checkout />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
+
+

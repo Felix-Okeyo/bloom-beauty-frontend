@@ -1,17 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Checkout = ({ product }) => {
-  const { name, price, image, sizes } = product;
-  const [selectedSize, setSelectedSize] = useState('');
-
-  const handleSizeChange = (size) => {
-    setSelectedSize(size);
-  };
-
-  const handleAddToCart = () => {
-    console.log(`Added ${name} (Size: ${selectedSize}) to cart.`);
-  }; 
-
+function Checkout() {
   return (
     <>
     <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
