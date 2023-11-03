@@ -6,33 +6,21 @@ body {
 }
 
 .nav{
-    background-color: none;
+    background-color: #e913f1;
     display: flex;
-    color: black;
+    color: #fff;
     justify-content: space-around;
     align-items: center;
     padding: 0 1rem;
+
+    
 }
 span{
-    color: #00A2A2;
+    color: goldenrod;
     font-weight: 700px;
 }
-.book{
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #00A2A2;
-    height: 50px;
-    width: 130px;
-    margin-top: 10px;
-    border-radius: 5px;
-    color: aliceblue;
 
-}
-.book:hover{
-    background-color:white ;
-    color: #00A2A2;
-    border-color: #00A2A2;
-}
+
 .nav ul{
 list-style: none;
 display: flex;
@@ -46,7 +34,7 @@ gap: 5rem;
    font-size: 1.5rem;
 }
 .nav a:hover{
-    color: #00A2A2;
+    color:goldenrod;
 }
 h4{
     margin-left: 5%;
@@ -76,4 +64,112 @@ padding: 0 1rem; */
     margin-right: 5%;
     
  }
+ video{
+    width: 100%;
+    object-fit: cover;
+ }
+        
+ .main{   
+  width: 100%;
+  height: 100vh;
+ }
+  .overlay h1{
+     position: absolute; 
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+ } 
+#imag{
+    float: left;
+    height: 50vh;
+    width: 50%;
+    /* background-color: #ab54ae; */
 
+}
+
+#imag img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   opacity: 1;
+}
+#txt{
+    float: right;
+    height: 50vh;
+    width: 50%;
+    
+}
+
+#txt p{
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#txt h4{
+    /* margin-bottom: 30px; */
+    padding: 20px;
+    font-size: 30px; 
+    text-align: center; 
+    color: #e913f1;
+}
+#imag1{
+    float: right;
+    height: 50vh;
+    width: 50%;
+    /* background-color: #ab54ae; */
+
+}
+#imag1 img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+#txt1{
+    float: left;
+    height: 50vh;
+    width: 50%;
+    
+    
+   
+}
+#txt1 h4{
+    /* margin-bottom: 30px; */
+    padding: 20px;
+    font-size: 30px; 
+    text-align: center; 
+    color: #e913f1;
+}
+#txt1 p{
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 20px;
+}
+#imag2{
+    float: left;
+    height: 50vh;
+    width: 50%;
+    /* background-color: #ab54ae; */
+
+}
+
+#imag2 img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+#txt2{
+    float: right;
+    height: 50vh;
+    width: 50%;
+    
+   
+}
+#txt2 p{
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 20px;
+}
