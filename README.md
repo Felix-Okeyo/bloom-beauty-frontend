@@ -41,5 +41,5 @@ The frontend application will be accessible at http://localhost:3000/.
 * Felix Okeyo
 * Isaack Mogaka
 
-License
+## License
 This project is licensed under the MIT License .
