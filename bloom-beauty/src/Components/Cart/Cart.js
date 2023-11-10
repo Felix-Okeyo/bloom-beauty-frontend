@@ -5,7 +5,11 @@ import { useAPIContext } from '../Data/apiContextData';
 
 
 
-function Cart({ cart, setCart, login, closeCart }) {
+function Cart({ cart, setCart, login, user, closeCart }) {
+
+  
+
+
   
   const { products } = useAPIContext();
   const [total, setTotal] = useState(0);
@@ -25,43 +29,53 @@ function Cart({ cart, setCart, login, closeCart }) {
     setIsAuthenticated(login);
   }, [login]);
 
-  const handleCheckout = () => {
-
-    if (!isAuthenticated) {
-      navigate('/login');      
-    } else {
-
-      const invoiceData = {
-        id: 1, 
-        user_id: 2, 
-        product_id: 3, 
-        quantity: 4,
-        cost: 50, 
-        created_at: new Date().toDateString(),
-      };
-      
-
-
-      fetch('https://bloom-beauty.onrender.com/invoices', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(invoiceData),
-      })
-        .then((response) => {
-          if (response.ok) {
-            alert('Invoice created successfully!');
-          } else {
-            alert('Failed to create the invoice.');
-          }
+  const handleCheckout = async () => {
+    console.log('Handle Checkout Clicked');
+    try {
+      const checkoutPromises = cartProducts.map((product) => {
+        return fetch('https://bloom-beauty.onrender.com/invoices', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            user_id: user.id,
+            product_id: product.id,
+            cost: product.price,
+            quantity: productQuantities[product.id] || 1,
+          }),
         })
-        .catch((error) => {
-          console.error('Network error:', error);
-          alert('Failed to create the invoice.');
-        });
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Failed to create invoice item for product ID ${product.id}`);
+            }
+            return response.json(); // Assuming the response is JSON
+          })
+          .catch((error) => {
+            console.error('Error during checkout:', error);
+          });
+      });
+  
+      const results = await Promise.all(checkoutPromises);
+      console.log('Checkout results:', results);
+      alert('Order placed successfully!');
+  
+      // Clear the cart after successful checkout
+      setCart([]);
+      setProductQuantities({});
+    } catch (error) {
+      console.error('Error during checkout:', error);
     }
   };
+  
+
+  const handleCheckout1 =  () => {
+    alert('Checkout button clicked!');
+  };
+  
+
+  
+
 
   const handleQuantityChange = (productId, newQuantity) => {
     setProductQuantities((prevQuantities) => ({
@@ -191,7 +205,9 @@ function Cart({ cart, setCart, login, closeCart }) {
         <label htmlFor="promo" className="font-semibold text-sm text-gray-700 uppercase">Promo Code</label>
         <input type="text" id="promo" placeholder="Enter your code" className="p-2 text-sm w-full bg-indigo-100 rounded" />
       </div>
-      <button className="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase w-full rounded">
+      <button 
+      onClick={handleCheckout1}
+      className="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase w-full rounded">
         Apply
       </button>
       <div className="border-t mt-4"></div>

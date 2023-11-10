@@ -23,14 +23,28 @@ const Login = ({ setLogin }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState('');
   const [role, setRole] = useState('');
+  const [currentUser, setCurrentUser] = useState('');
+
+  
 
   const handleLogin = async (values) => {
     console.log('Submitted values:', values);
 
     try {
+      let currentUser;
+      if (values.email === 'admin@example.com' && values.password === 'adminpassword' && values.role === '1') {
+        const admin = {id: "8", phone:"0723456987", address: "Nairobi" }
+        currentUser = admin;
+        setCurrentUser(currentUser)
+        setIsLoggedIn(true);
+        setLogin(true);
+        setUserEmail(values.email);
+        setRole(values.role);
+      } else if (values.email === 'user@example.com' && values.password === 'userpassword' && values.role === '2') {
 
-      
-      if (values.email === 'test@example.com' && values.password === 'password') {
+        const user = {id: "10", phone:"0723456907", address: "Nakuru" }
+        currentUser = user;
+        setCurrentUser(currentUser)
         setIsLoggedIn(true);
         setLogin(true);
         setUserEmail(values.email);
@@ -43,7 +57,6 @@ const Login = ({ setLogin }) => {
       alert('Error authenticating. Please try again.');
     }
   };
-
   return (
     <>
       {!isLoggedIn ? (
@@ -130,15 +143,12 @@ const Login = ({ setLogin }) => {
         <div>
           {role === '1' ? (
             <div>
-              <Home userEmail={userEmail} onLogout={() => setIsLoggedIn(false)} />
-              <p>Welcome, you are logged in as an admin!</p>
-              <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+              <Home userEmail={userEmail} admin={currentUser} onLogout={() => setIsLoggedIn(false)} />
             </div>
           ) : role === '2' ? (
             <div>
-               <Products userEmail={userEmail} onLogout={() => setIsLoggedIn(false)} />             
-              <p>Welcome, you are logged in as a user!</p>
-              <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+               <Products userEmail={userEmail} user={currentUser} onLogout={() => setIsLoggedIn(false)} />             
+             
             </div>
           ) : (
             <div>Unauthorized Access</div>

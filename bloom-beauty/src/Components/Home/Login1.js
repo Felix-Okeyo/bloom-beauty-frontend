@@ -38,7 +38,8 @@ const Login = ({ setLogin }) => {
           }),
         });
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          new Error('Network response was not ok');
+          setError(error.message)
       }
 
       if (response.ok) {
@@ -86,6 +87,7 @@ const Login = ({ setLogin }) => {
 
           <div className="bg-white w-full md:max-w-md lg:max-w-full md:w-1/2 xl:w-1/2 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
             <div className="w-full mr-64 ml-24 h-100">
+              {error? <p>{error}</p>:null}
               <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
               <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleLogin}>
                 {() => (

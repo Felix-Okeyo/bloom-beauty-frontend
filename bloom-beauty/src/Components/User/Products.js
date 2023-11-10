@@ -6,7 +6,7 @@ import Cart from '../Cart/Cart';
 import { useAPIContext } from '../Data/apiContextData';
 import Services from './Services';
 
-function Products({ login }) {
+function Products({ login, user }) {
   const { products, loading } = useAPIContext();
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
@@ -74,20 +74,19 @@ function Products({ login }) {
           
           <Search onSearchChange={handleSearchChange} onCategory={handleCategoryChange} />
         </div>
-        <div className="ml-96">
-          <div style={{ position: "relative" }}>
-            <img
-              onClick={openCart}
-              class="w-12 mr-28 h-12"
-              src="https://png.pngtree.com/png-vector/20190114/ourlarge/pngtree-vector-add-to-cart-vector-icon-png-image_313447.jpg"
-              alt="cart"
-            />
-            <div className='mr-28 ' style={{ position: "absolute", top: "-10px", right: "-10px", backgroundColor: "red", color: "white", borderRadius: "50%", padding: "4px 8px", fontSize: "12px" }}>
-              {cart.length}
-            </div>
-          </div>
-
-        </div>
+    <div className="flex items-center md:mr-12">
+  <div style={{ position: "relative" }}>
+    <img
+      onClick={openCart}
+      className="w-12 h-12 cursor-pointer"
+      src="https://png.pngtree.com/png-vector/20190114/ourlarge/pngtree-vector-add-to-cart-vector-icon-png-image_313447.jpg"
+      alt="cart"
+    />
+    <div className='absolute top-0 right-0 bg-red-500 text-white rounded-full px-2 py-1 text-xs'>
+      {cart.length}
+    </div>
+  </div>
+</div>
       </div>
       <div className="flex gap-4 ml-10 mr-10 ">
         {/* <div className="col-span-1">
@@ -97,8 +96,7 @@ function Products({ login }) {
 
         <div className="flex  ml-6 flex-wrap -mx-4 " >
           {/* <button onClick={openCart}>Open Cart</button> */}
-
-
+     
 
 
           {displayedProducts.map((product) => (
@@ -139,7 +137,8 @@ function Products({ login }) {
 
               </div>
             </div>
-          ))}
+          ))}  
+          
         </div>
 
         <div className="fixed inset-y-0 right-0 z-50 flex flex-col items-end p-4">
@@ -147,7 +146,7 @@ function Products({ login }) {
 
             <div className="max-h-screen  overflow-y-auto">
               {cartOpen && (
-                <Cart cart={cart} products={products} onlogin={login} setCart={setCart} closeCart={closeCart} />
+                <Cart cart={cart} user={user} products={products} onlogin={login} setCart={setCart} closeCart={closeCart} />
               )}
             </div>
           </div>

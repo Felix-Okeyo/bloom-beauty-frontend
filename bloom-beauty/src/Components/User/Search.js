@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { SearchIcon } from '@heroicons/react/outline';
-
+import { SearchIcon } from '@heroicons/react/outline';
 
 function Search({ onSearchChange, onCategory }) {
   const [categories, setCategories] = useState([]);
@@ -53,7 +52,7 @@ function Search({ onSearchChange, onCategory }) {
           className="rounded-lg w-full border-2 p-3 pr-10 outline-blue-600"
         />
         <button className="absolute right-3 top-3">
-          {/* <SearchIcon className="h-5 w-5 text-gray-400" /> */}
+          <SearchIcon className="h-5 w-5 text-gray-400" />
         </button>
       </div>
       <select

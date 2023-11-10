@@ -10,7 +10,7 @@ import OrdersAnalytics from './OrdersAnalytics';
 
 
 
-function Home({ userEmail, onLogout }) {
+function Home({ userEmail, onLogout, admin }) {
 
     const [selectedSection, setSelectedSection] = useState('products');
 
@@ -64,7 +64,8 @@ function Home({ userEmail, onLogout }) {
                         </button>
                         <button class="ml-6 text-green-500 hover:text-green-500">
                             <i class="fa fa-question-circle-o h-5 w-5 fill-current" aria-hidden="true"
-                                style={{ color: '#fff' }}>{userEmail}</i>
+                                style={{ color: '#fff' }}>{userEmail} {admin.id}</i>
+                                
                         </button>
                         <button class="ml-6 text-green-500 hover:text-green-500">
                             <i class="fa fa-question-circle-o h-5 w-5 fill-current" aria-hidden="true"
