@@ -35,11 +35,11 @@ The frontend application will be accessible at http://localhost:3000/.
 * public/: Directory containing static assets, including the background video.
 
 ## Contributors
-* Geoffrey Bii
-* Wise Perpetual
-* Crystal Kariuki
-* Felix Okeyo
-* Isaack Mogaka
+* [Geoffrey Bii](https://github.com/Bii-teki)
+* [Wise Perpetual](https://github.com/perps21)
+* [Crystal Kariuki](https://github.com/blackcrystal0000)
+* [Felix Okeyo](https://github.com/Felix-Okeyo)
+* [Isaack Mogaka](https://github.com/Isaackmogaka)
 
 ## License
 This project is licensed under the MIT License .
